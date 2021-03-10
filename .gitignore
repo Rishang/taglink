@@ -1,0 +1,11 @@
+tmp/
+**tmp**
+*.code-workspace
+.*.code-workspace
+.idea/
+.mypy_cache/
+.vscode/
+__pycache__/
+.ipynb_checkpoints/
+.pipenv/
+.env*
