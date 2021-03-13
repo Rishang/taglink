@@ -1,2 +1,5 @@
 fastapi[all]
 metadata_parser
+feedparser
+lxml
+bs4

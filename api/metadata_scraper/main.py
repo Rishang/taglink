@@ -23,6 +23,6 @@ app.add_middleware(
 
 @app.post("/get_metadata/")
 async def scraper(url_link: url_link):
-    url_metadata = metadataparse(url_link.url)
-    data = url_metadata.metadata
-    return data
+    
+    url_metadata = metadataparse(url_link.url).metadata
+    return url_metadata
