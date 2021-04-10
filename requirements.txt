@@ -7,3 +7,6 @@ pillow
 django-widget-tweaks
 sorl-thumbnail
 django-taggit
+feedparser
+lxml
+bs4
