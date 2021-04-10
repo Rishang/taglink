@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+<link href="{% static 'css/icons.css' %}" rel="stylesheet">
+{% endblock css %}
+
+{% block content %}
+
+<div class="container">
+  <div class="container-fluid">     
+    <h1>
+      My Links
+      <a href="{% url 'add_categoty' %}" class="btn btn-primary float-right">New category</a>
+    </h1>
+    <br>
+    <div class="row">
+    {% if user.is_authenticated %}
+      {% for link in links.user_links %}
+        <div class="bg-white rcorners shadow overflow-hidden p-0 m-0">
+          <span class="float-right p-2 m-2">
+            <a href="#">
+              <a href="{% url 'user_links' link.pk %}" class="fas fa-trash-alt"></a>
+            </a>
+          </span>
+          <div class="ei-img">
+            <img src="{{link.imageUrl}}" alt="" class="img-thumbnails float-left m-0 p-2" height="150" width="auto">
+          </div>
+          <div class="m-2 p-2">
+            <h5>{{link.title}}</h5>
+            <span>
+              <p class="p-0 m-0">{{link.description}}</p>
+              <small>
+                <a href="{{link.url}}">{{link.url}}</a>
+              </small>
+            </span>
+            <hr>
+            <span  class="bg-white rounded m-1">
+              <span class="m-1">
+                Category: <a href="#">{{link.category}}</a>
+              </span>
+            </span>
+            
+            <span  class="bg-white rounded m-1">
+              <span class="m-1">
+                Tags: {% for tag in link.tags.all %} {{tag}} {% endfor %}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="p-4"></div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+</div>
+  
+{% endblock content %}

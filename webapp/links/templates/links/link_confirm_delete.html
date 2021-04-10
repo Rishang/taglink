@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock css %}
+
+
+{% block content %}
+
+Are you shure ?
+<form action="" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Yes">
+</form>
+{% endblock content %}

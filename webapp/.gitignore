@@ -1,2 +1,4 @@
 *.sqlite3
 [0-9]*_*.py
+assets
+media/
