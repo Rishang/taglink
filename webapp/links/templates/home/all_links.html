@@ -29,15 +29,19 @@
               </small>
             </span>
             <hr>
+            
+            <b>Tags:</b> 
             <span  class="bg-white rounded m-1">
               <span class="m-1">
-                Category: <a href="#">{{link.category}}</a>
+              {% for tag in link.tags.all %}{{tag}}{% endfor %}
               </span>
             </span>
-            
-            <span  class="bg-white rounded m-1">
-              <span class="m-1">
-              Tags: {% for tag in link.tags.all %}{{tag}}{% endfor %}
+            <span class="float-right">
+              <b>By: </b>
+              <span  class="bg-white rounded m-1">
+                <span class="m-1">
+                <a href="{% url 'user_profile' link.user %}">{{link.user}}</a>
+                </span>
               </span>
             </span>
           </div>
