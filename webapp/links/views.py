@@ -8,6 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from .models import Link, Category
 
+from .forms import addLink
+
 # Create your views here.
 class createCategory(LoginRequiredMixin, CreateView):
     model = Category
@@ -20,13 +22,15 @@ class createCategory(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-
 class createLink(LoginRequiredMixin, CreateView):
-
+    
     model = Link
-    fields = ("url", "title", "description", "imageUrl", "category", "tags")
-    login_url = reverse_lazy("login_page")
-
+    fields =  ("url", "title", "description", "imageUrl", "category", "tags")
+    
+    def get(self, request, *args, **kwargs):
+            context = {'form': addLink(user_id=self.request.user.id)}
+            return render(request, 'links/link_form.html', context)
+        
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -67,6 +71,3 @@ class deleteLink(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
             return True
         else:
             return False
-
-def home(request):
-    return render(request, "home/index.html")
