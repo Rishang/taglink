@@ -10,7 +10,6 @@ from .register import createUser
 
 from django.contrib.auth.models import User
 from django.views.generic import ListView
-from .models import Profile
 
 # Create your views here.
 
@@ -23,10 +22,11 @@ class userProfile(ListView):
 
     def get_queryset(self):
 
-        user_page = User.objects.get(username=self.kwargs["slug"])
-        user_profile = Profile.objects.get(user=user_page)
+        user = User.objects.get(username=self.kwargs["slug"])
+        user_profile = user.profile
+        user_links = user.link_set.all()
 
-        return {"profile": user_profile}
+        return {"profile": user_profile, "links": user_links}
 
 
 def register(request):
