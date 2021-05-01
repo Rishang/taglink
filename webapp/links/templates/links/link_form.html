@@ -1,19 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
+
 
 {% block content %}
 
 <div class="container">
   <div class="p-3"></div>
-  <div class="row">
-    <div class="singup-form">
+    <a href="{% url 'add_categoty' %}">Add Category</a>
+    {% include 'messages.html' %}
+    <div class="form-group">
       <form action="" method="post">
         {% csrf_token %}
-        {{form}}
-        <input type="submit" class="bg-g-1" value="Add">
+        {# {{form}} #}
+        <!-- url -->
+        <label for="url">Link</label>
+        {% render_field form.url class="form-control" id="url" %}
+        <!-- category -->
+        <label for="category">Category</label>
+        {% render_field form.category class="form-select" %}
+        <!-- title -->
+        {% render_field form.title class="form-control" type="hidden" id="form_title" %}
+        <!-- description -->
+        {% render_field form.description class="form-control" type="hidden" id="form_description" %}
+        <!-- image -->
+        {% render_field form.imageUrl class="form-control"  type="hidden"  %}
+        <!-- tags -->
+        <label for="tags">Tags</label>
+        {% render_field form.tags class="form-control" %}
+        <br>
+        <input type="submit" class="btn btn-primary" value="Add">
       </form>
+      <div class="model" id="model">
+        <h5 id="title"></h5>
+        <p id="description"></p>
+      </div>
     </div>
   </div>
 </div>
-
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/link_preview.js' %}"></script>
+{% endblock scripts %}

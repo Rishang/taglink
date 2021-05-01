@@ -7,12 +7,12 @@
  body {
     font-size: 20px;
     color: #212529;
-    font-family: 'Lora', 'Times New Roman', serif;
-  }
+    /* font-family: 'Lora', 'Times New Roman', serif; */
+}
   
   p {
     line-height: 1.5;
-    margin: 30px 0;
+    margin: 20px 0;
   }
   
   p a {
@@ -87,7 +87,7 @@
     background: transparent;
   }
   
-  #mainNav {
+  /* #mainNav {
     position: absolute;
     border-bottom: 1px solid #e9ecef;
     background-color: white;
@@ -167,7 +167,7 @@
       /* if the user changes the scrolling direction, we show the header */
       transform: translate3d(0, 100%, 0);
     }
-  }
+  } */
   
   header.masthead {
     margin-bottom: 50px;

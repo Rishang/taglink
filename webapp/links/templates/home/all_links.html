@@ -2,54 +2,71 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+<link href="{% static 'css/home_tabs.css' %}" rel="stylesheet">
 <link href="{% static 'css/icons.css' %}" rel="stylesheet">
 {% endblock css %}
 
 
 {% block content %}
 
-<div class="container">
-  <div class="container-fluid">     
-    <!-- <h1></h1> -->
-    <br>
-    <div class="row">
+
+  <div class="taglink-container">
+
+    <!-- url post request html -->
+    <div class="taglink-form-group">
+      <label for="url">Content : </label>
+      <input type="url" class="taglink-form-control" id="url" placeholder="Enter your URL....">
+      <input type="button" class="taglink-btn" id="btn" value="Search">
       
-      {% for link in links %}
-      <div class="bg-white rcorners shadow overflow-hidden p-0 m-0">
-          <div class="ei-img">
-            <img src="{{link.imageUrl}}" alt="" class="img-thumbnails float-left m-0 p-2" height="150" width="auto">
-          </div>
-          <div class="m-2 p-2">
-            <h5>{{link.title}}</h5>
-            <span>
-              <p class="p-0 m-0">{{link.description}}</p>
-              <small>
-                <a href="{{link.url}}">{{link.url}}</a>
-              </small>
-            </span>
-            <hr>
-            
-            <b>Tags:</b> 
-            <span  class="bg-white rounded m-1">
-              <span class="m-1">
-              {% for tag in link.tags.all %}{{tag}}{% endfor %}
-              </span>
-            </span>
-            <span class="float-right">
-              <b>By: </b>
-              <span  class="bg-white rounded m-1">
-                <span class="m-1">
-                <a href="{% url 'user_profile' link.user %}">{{link.user}}</a>
-                </span>
-              </span>
-            </span>
-          </div>
+      <div class="taglink-model" id="taglink-model">
+        <div class="image">
+          <img src="" alt="default image" id="img">
         </div>
-        <div class="p-4"></div>
-      {% endfor %}
+        <div class="info">
+          <h5 id="title"></h5>
+          <p id="description"></p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="container p-4">
+    <div class="basic-grid">
+        {% for link in links %}
+          <div class="card">
+            <img src="{{link.imageUrl}}" onerror="ImageError(this)" alt="default" class="card-img-top">
+            <div class="card-body">
+              <h4 class="card-title">{{link.title}}</h4>
+              <!-- <p class="card-text">{{link.description}}.</p>
+              <a href="{{link.url}}">{{link.url}}</a> -->
+              <span  class="bg-white rounded m-1">
+                <span class="m-1">
+                {% for tag in link.tags.all %}{{tag}}{% endfor %}
+                </span>
+              </span>
+              <span class="float-right">
+                <b>By: </b>
+                <span  class="bg-white rounded m-1">
+                  <span class="m-1">
+                  <a href="{% url 'user_profile' link.user %}">{{link.user}}</a>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+
   
 {% endblock content %}
+
+{% block scripts %}
+<script language="JavaScript">
+  function ImageError(img)
+  {
+    img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU";
+  }
+
+</script>
+{% endblock scripts %}

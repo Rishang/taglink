@@ -4,7 +4,7 @@ from pydantic import BaseModel, ValidationError
 from typing import Optional
 import feed
 
-class input(BaseModel):
+class feed_input(BaseModel):
     url: str
 
 app = FastAPI()
@@ -22,6 +22,6 @@ app.add_middleware(
 )
 
 @app.post("/get_feed")
-async def rss_data(input: input):
-    f = feed.parse(input.url)
+async def rss_data(feed_input: feed_input):
+    f = feed.parse(feed_input.url)
     return f

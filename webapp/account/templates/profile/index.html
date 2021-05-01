@@ -13,91 +13,107 @@
 
 
 {% block content %}
-<br>
-<div class="container p-4">
-  <div class="row py-4 px-10">
-    <div class="mx-auto" style="width: 80%; max-width: 100%">
-      <!-- Profile widget -->
-      <div class="bg-white rcorners shadow overflow-hidden">
-        <div class="px-4 pt-4 pb-4 cover">
-          <div class="media align-items-end profile-head">
-            <div class="profile mr-5">
-              {% if slugUser.profile.image %}
-                {% thumbnail slugUser.profile.image "150x150" crop="center" as dp %}
-                <img src="{{ dp.url }}" alt="{{ slugUser.profile.user.username }} profile image"
-                  height="10" class="rcorners-profile-dp align-content-md-center img-thumbnail"
-                  >
-                {% endthumbnail %}
-              {% else %}
-              <img src="{% static '/img/default-user-image.jpg' %}" alt="{{ slugUser.profile.user.username }} profile image"
-              height="10" class="rcorners-profile-dp align-content-md-center img-thumbnail">
-              {% endif %}
-              {% if user.is_authenticated and slugUser.profile == user.profile %}
-                <a href="{% url 'edit_profile' user.username %}" class="btn btn-outline-dark btn-sm btn-block rcorners-btn">Edit profile</a>
-                <a href="{% url 'delete_profile' user.id %}" class="btn btn-outline-danger btn-sm btn-block rcorners-btn">Delete Account</a>
-              {% else %}
-                <br>
-                <br>
-                <br>
-              {% endif %}
-            
-            </div>
-            <div class="media-body mb-5">
-              <h4 class="mt-1 mb-3">{{ slugUser.profile.user.first_name }} {{ slugUser.profile.user.last_name }}
-                <br>
-                <a href="#">
-                  <small>@{{ slugUser.profile.user.username }}</small>
-                </a>
-              </h4>
-              <p class="small mb-2"><b>Articles posted:</b>
-                <h5 class="font-weight-bold mb-2">
-                  {{ slugUser.total_post }}
-                </h5>
-              </p>
-            </div>
-          </div>
-        </div>
 
-        {% if slugUser.profile.about != '' %}
-          <div class="px-4 py-3">
-            <h5 class="mb-0">About</h5>
-            <div class="p-3 shadow-sm rcorners-content">
-              <p class="font-italic mb-3">
-                {{ slugUser.profile.about }}
-              </p>
-            </div>
-          </div>
-        {% endif %}
-        
-        <hr class="w-75">
-        <div class="py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h5 class="mb-0">Recent posts</h5><a href="#" class="btn rcorners-btn btn-link text-muted">Show all</a>
-          </div>
-          <div class="row">
-            <div class="p-3 shadow-sm rcorners-content">
-   
-              {% for article in slugUser.post %}
-                <a href="{% url 'blog_post' article.id %}">
-                  <h4 class="post-title">
-                    {{article.title}}
-                  </h4>
-                </a>
-                <p>
-                  Posted by:
-                  <a href="#">
-                    {{ article.author }}
-                  </a>on {{ article.datePosted| date:"d M Y" }}
-                </p>
-                <hr>
-              {% endfor %}
-            </div>
-            <hr>
-          </div>
-        </div>
-      </div>
+<!-- <div class="header">
+  <div class="prev">
+      <a href="clone-index.html" id="prev-link"><i class="fas fa-arrow-circle-left"></i></a>
+  </div>
+
+  <div class="header-link">
+      <a href="clone-index.html">TAGLINK</a>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="profile">
+    {% if slugUser.profile.image %}
+      {% thumbnail slugUser.profile.image "150x150" crop="center" as dp %}
+        <img src="images/user-icon.png" alt="Profile Image">
+    {% endthumbnail %}
+    {% else %}
+      <img src="{% static '/img/default-user-image.jpg' %}" alt="{{ slugUser.profile.user.username }} profile image">
+    {% endif %}
+    <div class="user-id">
+      <h4 id="user-id">@{{ slugUser.profile.user.username }}</h4>
     </div>
+    <a href="index.html" id="edit-profile" class="edit-profile">Edit profile</a>
+  </div>
+
+  <div class="user-link-group">
+    {% for l in slugUser.links %}
+      <div class="user-link">
+        <a href="#" target="_blank">
+          <div class="link-img">
+            
+            <img src="{{l.imageUrl}}" onerror="ImageError(this)" alt="Img">
+          </div>
+          <p class="link-text" id="link-text">{{l.title}}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+  
+<div class="socials">
+  <div class="social-media fb">
+    <a href="#" id="fb-link"><i class="fab fa-facebook"></i></a>
+  </div>
+  
+  <div class="social-media twitter">
+    <a href="#" id="twitter-link"><i class="fab fa-twitter"></i></a>
+  </div>
+  
+  <div class="social-media insta">
+    <a href="#" id="insta-link"><i class="fab fa-instagram"></i></a>
+  </div>
+  
+  <div class="social-media linkedin">
+    <a href="#" id="linkedin-link"><i class="fab fa-linkedin"></i></a>
+  </div>
+  
+  <div class="social-media github">
+    <a href="#" id="github-link"><i class="fab fa-github"></i></a>
+  </div>
+  
+  <div class="social-media youtube">
+    <a href="#" id="youtube-link"><i class="fab fa-youtube"></i></a>
   </div>
 </div>
 
+
+
 {% endblock content %}
+
+{% block scripts %}
+<script language="JavaScript">
+  
+  function ImageError(img)
+  {
+    img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU";
+  }
+  
+  
+  $(document).ready(function(){
+    
+    var imgArr = [
+    '1.jpg',
+    '2.png',
+    '3.jpg',
+    '4.jpeg',
+    '5.png',
+    '6.jpeg',
+    '7.jpeg',
+    '8.png',
+    '9.jpeg',
+    ];
+    
+    var random_num = Math.floor(Math.random() * imgArr.length);
+    
+    var result_img = "{% static 'img/background/' %}" + imgArr[random_num];
+    
+    $("nav").css("background-color", "rgba(221, 221, 221, 0.815)");
+    $("body").css("background-image", `url(${result_img})`);
+    
+});
+</script>
+{% endblock scripts %}

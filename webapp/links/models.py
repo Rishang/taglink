@@ -23,10 +23,10 @@ class Link(models.Model):
 
     url = models.URLField(blank=False)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=400)
-    imageUrl = models.URLField(blank=True, max_length=400)
+    description = models.CharField(blank=True, max_length=500)
+    imageUrl = models.URLField(blank=True, max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, max_length=20, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, default="default", max_length=20, on_delete=models.CASCADE)
     tags = TaggableManager()
 
     def __str__(self):
