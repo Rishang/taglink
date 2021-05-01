@@ -44,8 +44,11 @@
       <div class="user-link">
         <a href="#" target="_blank">
           <div class="link-img">
-            
-            <img src="{{l.imageUrl}}" onerror="ImageError(this)" alt="Img">
+            {% if l.imageUrl %}
+              <img src="{{l.imageUrl}}" alt="Img">
+            {% else %}
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU">
+            {% endif %}
           </div>
           <p class="link-text" id="link-text">{{l.title}}</p>
         </a>
@@ -86,12 +89,7 @@
 
 {% block scripts %}
 <script language="JavaScript">
-  
-  function ImageError(img)
-  {
-    img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU";
-  }
-  
+
   
   $(document).ready(function(){
     
