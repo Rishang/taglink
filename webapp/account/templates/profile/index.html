@@ -28,7 +28,7 @@
   <div class="profile">
     {% if slugUser.profile.image %}
       {% thumbnail slugUser.profile.image "150x150" crop="center" as dp %}
-        <img src="images/user-icon.png" alt="Profile Image">
+        <img src="{{ slugUser.profile.image }}" alt="Profile Image">
     {% endthumbnail %}
     {% else %}
       <img src="{% static '/img/default-user-image.jpg' %}" alt="{{ slugUser.profile.user.username }} profile image">
@@ -36,13 +36,17 @@
     <div class="user-id">
       <h4 id="user-id">@{{ slugUser.profile.user.username }}</h4>
     </div>
-    <a href="index.html" id="edit-profile" class="edit-profile">Edit profile</a>
+    {% if slugUser.profile.user == request.user %}
+      <a href="{% url 'edit_profile' request.user %}" id="edit-profile" class="edit-profile">Edit profile</a>
+    {% else %}
+      <div class="p-3">
+    {% endif %}
   </div>
 
   <div class="user-link-group">
     {% for l in slugUser.links %}
       <div class="user-link">
-        <a href="#" target="_blank">
+        <a href="{{l.url}}" target="_blank">
           <div class="link-img">
             {% if l.imageUrl %}
               <img src="{{l.imageUrl}}" alt="Img">
@@ -110,6 +114,7 @@
     var result_img = "{% static 'img/background/' %}" + imgArr[random_num];
     
     $("nav").css("background-color", "rgba(221, 221, 221, 0.815)");
+    $("body").addClass("overlay");
     $("body").css("background-image", `url(${result_img})`);
     
 });
