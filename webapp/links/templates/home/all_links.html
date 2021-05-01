@@ -34,7 +34,11 @@
     <div class="basic-grid">
         {% for link in links %}
           <div class="card">
-            <img src="{{link.imageUrl}}" onerror="ImageError(this)" alt="default" class="card-img-top">
+            {% if link.imageUrl %}
+              <img src="{{link.imageUrl}}" alt="default" class="card-img-top">
+            {% else %}
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU" class="card-img-top">
+            {% endif %}
             <div class="card-body">
               <h4 class="card-title">{{link.title}}</h4>
               <!-- <p class="card-text">{{link.description}}.</p>
@@ -62,11 +66,5 @@
 {% endblock content %}
 
 {% block scripts %}
-<script language="JavaScript">
-  function ImageError(img)
-  {
-    img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThcaJagHKBQjyVGHaoJxnqi_ARFzyW362neQSph59wVWQaxLulO326UfJtDJpNwx4A2_Q&usqp=CAU";
-  }
 
-</script>
 {% endblock scripts %}
