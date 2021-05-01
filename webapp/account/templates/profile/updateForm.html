@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+ 
+{% block content %}
+
+{% include 'messages.html' %}
+
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="control-group">
+    <b>Profile Image:</b>
+    <br>
+    {% render_field profile_form.image placeholder="Profile Image" class="mb-3" style="font-size: small;" %}
+  </div>
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <b>First Name</b>
+      {% render_field user_form.first_name placeholder="First Name" class="form-control" maxlength="200" %}
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+        <b>Last Name</b>
+      {% render_field user_form.last_name placeholder="Last Name" class="form-control" maxlength="200" %}
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <b>User Name</b>
+      {% render_field user_form.username placeholder="Username" class="form-control" maxlength="200" %}
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="form-group floating-label-form-group controls">
+      <b>Email Address</b>
+      {% render_field user_form.email placeholder="email" class="form-control" maxlength="200" %}
+      <p class="help-block text-danger"></p>
+    </div>
+  </div>
+
+
+  <br>
+  <div id="success"></div>
+  <a href="{% url 'user_profile' user.username %}" class="btn btn-link">Back</a>
+  
+  <button type="submit" class="btn btn-primary" id="submit">Done</button></form>
+
+{% endblock content %}

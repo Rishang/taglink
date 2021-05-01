@@ -6,10 +6,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms import ValidationError
-from .register import createUser
+
+from .register import createUser, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth.models import User
 from django.views.generic import ListView
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -40,3 +43,29 @@ def register(request):
         return redirect("login_page")
 
     return render(request, "registration/register.html", {"signup": newUser})
+
+"Edit user profile"
+@login_required(redirect_field_name='login',login_url='login_page')
+def edit_profile(request,**kwargs):
+
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+
+            messages.success(request, f"Account updated!")
+
+            return redirect('user_profile', request.user.username)
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    return render(request,'profile/updateForm.html', context)
