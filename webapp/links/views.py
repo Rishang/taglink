@@ -61,6 +61,7 @@ class ListAllUserLinks(LoginRequiredMixin, ListView):
 class deleteLink(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 
     model = Link
+    template_name = "links/link_confirm_delete.html"
     success_url = reverse_lazy('user_links')
     login_url = reverse_lazy("login_page")
 
