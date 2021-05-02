@@ -1,53 +1,95 @@
 {% extends "base.html" %}
 {% load static %}
 {% load widget_tweaks %}
+{% load thumbnail %}
 
- 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/edit-profile.css' %}">
+{% endblock css %}
+
 {% block content %}
 
 {% include 'messages.html' %}
-
-<form action="" method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <div class="control-group">
-    <b>Profile Image:</b>
-    <br>
-    {% render_field profile_form.image placeholder="Profile Image" class="mb-3" style="font-size: small;" %}
-  </div>
-  <div class="control-group">
-    <div class="form-group floating-label-form-group controls">
-      <b>First Name</b>
-      {% render_field user_form.first_name placeholder="First Name" class="form-control" maxlength="200" %}
-      <p class="help-block text-danger"></p>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="form-group floating-label-form-group controls">
-        <b>Last Name</b>
-      {% render_field user_form.last_name placeholder="Last Name" class="form-control" maxlength="200" %}
-      <p class="help-block text-danger"></p>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="form-group floating-label-form-group controls">
-      <b>User Name</b>
-      {% render_field user_form.username placeholder="Username" class="form-control" maxlength="200" %}
-      <p class="help-block text-danger"></p>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="form-group floating-label-form-group controls">
-      <b>Email Address</b>
-      {% render_field user_form.email placeholder="email" class="form-control" maxlength="200" %}
-      <p class="help-block text-danger"></p>
-    </div>
+<div class="header">
+  <div class="prev">
+      <a href="{% url 'user_profile' user.username %}" id="prev-link"><i class="fas fa-arrow-circle-left"></i></a>
   </div>
 
+  <div class="heading">
+      <p>Edit profile</p>
+  </div>
+</div>
 
-  <br>
-  <div id="success"></div>
-  <a href="{% url 'user_profile' user.username %}" class="btn btn-link">Back</a>
+<div class="container">
   
-  <button type="submit" class="btn btn-primary" id="submit">Done</button></form>
+  <form action="" class="edit-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset>
+      <legend>Edit : </legend>
+      <div class="form-group">
+        <label for="name">Profile Image : </label>
+        {% render_field profile_form.image placeholder="Profile Image" class="mb-3" style="font-size: small;" %}
+      </div>
+            
+        <div class="form-group">
+          <label for="name">First Name : </label>
+          {% render_field user_form.first_name placeholder="First Name" class="form-control" maxlength="200" %}
+        </div>
 
+        <div class="form-group">
+          <label for="name">Last Name : </label>
+          {% render_field user_form.last_name placeholder="Last Name" class="form-control" maxlength="200" %}
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username : </label>
+          {% render_field user_form.username placeholder="Username" class="form-control" maxlength="200" %}
+        </div>
+        
+        <div class="form-group">
+          <label for="username">Email : </label>
+          {% render_field user_form.email placeholder="email" class="form-control" maxlength="200" %}
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Password : </label>
+            <input type="password" name="pwd" id="pwd" class="form-control" placeholder="Enter your password..." value="password" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="fb">Facebook : (Optional)</label>
+            <input type="text" name="fb" id="fb" class="form-control" placeholder="Enter your facebook Id...">
+        </div>
+
+        <div class="form-group">
+            <label for="twitter">Twitter : (Optional)</label>
+            <input type="text" name="twitter" id="twitter" class="form-control" placeholder="Enter your twitter Id...">
+        </div>
+
+        <div class="form-group">
+            <label for="insta">Instagram : (Optional)</label>
+            <input type="text" name="insta" id="insta" class="form-control" placeholder="Enter your instagram Id...">
+        </div>
+
+        <div class="form-group">
+            <label for="fb">Linkedin : (Optional)</label>
+            <input type="text" name="fb" id="fb" class="form-control" placeholder="Enter your linkedin Id...">
+        </div>
+
+        <div class="form-group">
+            <label for="youtube">Youtube : (Optional)</label>
+            <input type="text" name="youtube" id="youtube" class="form-control" placeholder="Enter your youtube Id...">
+        </div>
+
+        <div class="form-group">
+            <label for="github">Github : (Optional)</label>
+            <input type="text" name="github" id="github" class="form-control" placeholder="Enter your github Id...">
+        </div>
+
+        <input type="submit" class="btn btn-info w-100 mt-5 p-2" value="Save changes">
+      </fieldset>
+    </form>
+
+  
 {% endblock content %}

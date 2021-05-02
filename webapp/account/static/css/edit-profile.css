@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+*, ::before, ::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgba(245, 245, 245, 0.863);
+}
+
+.header{
+    margin-top: 10px;
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+}
+
+.header .prev{
+    position: absolute;
+    left: 30px;
+    top: -6px;
+    font-size: 2.5em;
+}
+
+.header .prev > a{
+    text-decoration: none;
+    color: #000;
+}
+
+.header .heading > p{
+    font-size: 2em;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 400px){
+    .header .prev{
+        left: 10px;
+    }
+}
+
+.container{
+    margin-top: 6em;
+    margin-bottom: 2em;
+}
+
+.container .edit-form{
+    max-width: 90%;
+    margin:auto;
+}
+
+.container .edit-form .user-img{
+    width: 125px;
+    margin: auto;
+    margin-bottom: 4em;
+}
+
+.container .edit-form .user-img > a {
+    position: relative;
+    text-decoration: none;
+    color: transparent;
+    display: block;
+    border-radius: 50%;
+    border: 0.3px solid black;
+}
+
+.container .edit-form .user-img > a > img{
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.container .edit-form .user-img > a > i {
+    font-size: 35px;
+    color: black;
+    position: absolute;
+    bottom: 4px;
+    right: 0px;
+    background: white;
+    border-radius: 65px;
+}
+
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 2.35em;
+    padding-bottom: 2.625em;
+    padding-left: 4.75em;
+    padding-right: 4.75em;
+    border: 2px groove;
+    border-radius: 10px;
+}
+
+legend {
+    display: inline-block;
+    width: 3em;
+    padding-left: 10px;
+    padding-right: 2px;
+    border: none;
+}
+
+.container .edit-form .form-group .form-control {
+    margin-bottom: 30px;
+}
