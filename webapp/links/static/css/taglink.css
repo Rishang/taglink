@@ -191,6 +191,13 @@ body{
     max-width: 80%;
     margin: auto;
     margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1200px){
+    .taglink-container{
+        max-width: 85%;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -228,6 +235,7 @@ body{
     max-width: 80%;
     margin: auto;
     position: relative;
+    /* text-align: center; */
 }
 
 .taglink-container .taglink-form-group label{
@@ -247,6 +255,19 @@ body{
 
 .taglink-container .taglink-form-group .taglink-form-control:focus{
     outline: none;
+    background-color: white;
+}
+
+.taglink-container .taglink-form-group .cancel-btn{
+    background-color: #fff;
+    position: absolute;
+    top: -7px;
+    right: 10px;
+    border: none;
+    font-size: 1.4em;
+    font-weight: 900;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .taglink-container .taglink-form-group .taglink-btn{
@@ -269,6 +290,8 @@ body{
     position: absolute;
     left: 64px;
     padding: 10px;
+    z-index: 100;
+    background-color: rgba(245, 245, 245, 0.9);
 }
 
 .taglink-container .taglink-form-group .taglink-model .image{
@@ -292,17 +315,56 @@ body{
     }
 }
 
-.taglink-container .tab-groups{
-    border: 1px solid black;
-    margin-top: 40px;
+.row {
+    margin-top: 6em;
 }
 
-.taglink-container .tab-groups .tabs{
-    border: 1px solid black;
-    max-width: 10%;
+.row .col-lg-4 {
+    margin-bottom: 30px;
 }
 
-.taglink-container .tab-groups .tabs .thumbnail > img{
-    width: 100px;
-    height: 100px;
+.row .col-lg-4 .link-tabs{
+    border: 2px solid grey;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    height: 27em;
+    overflow: hidden;
+}
+
+.row .col-lg-4 .link-tabs .img-tab {
+    overflow: hidden;
+}
+
+.row .col-lg-4 .link-tabs .img-tab > img{
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.row .col-lg-4 .link-tabs .text-tab .title{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.row .col-lg-4 .link-tabs .text-tab .tags{
+    margin-bottom: 10px;
+}
+
+.row .col-lg-4 .link-tabs .text-tab .tags > a{
+    text-decoration: none;
+    background-color: lightblue;
+    padding: 3px;
+    border-radius: 5px;
+    color: #1c21d0;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.row .col-lg-4 .link-tabs .text-tab .tags > a:hover{
+    color: #3e65bd;
 }
