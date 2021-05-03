@@ -47,8 +47,8 @@ body{
 }
 
 .container .edit-form{
-    max-width: 90%;
-    margin:auto;
+    max-width: 70%;
+    margin: auto;
 }
 
 .container .edit-form .user-img{

@@ -82,6 +82,7 @@ body{
     font-size: 1.2em;
     color: #fff;
     margin-bottom: 0;
+    margin-top: 20px;
 }
 
 .container .user-link-group{
@@ -181,6 +182,35 @@ body{
     background-color: transparent;
 }
 
+.socials-cover{
+    background-color: #313131;
+    border-radius: 20px;
+    width: 48%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 992px){
+    .socials-cover{
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .socials-cover{
+        width: 78%;
+    }
+}
+
+@media only screen and (max-width: 576px){
+    .socials-cover{
+        width: 86%;
+    }
+
+    .socials .social-media{
+        margin: 20px 12px !important;
+    }
+}
+
 .socials{
     display: flex;
     justify-content: center;
@@ -190,7 +220,7 @@ body{
 .socials .social-media{
     font-size: 1.8em;
     color: #fff;
-    margin: 20px 8px;
+    margin: 20px 20px;
 }
 
 .socials .social-media .fab {

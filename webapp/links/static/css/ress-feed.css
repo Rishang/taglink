@@ -190,7 +190,7 @@ body{
 .taglink-container{
     max-width: 80%;
     margin: auto;
-    margin-top: 5em;
+    margin-top: 40px;
     margin-bottom: 50px;
 }
 
@@ -222,63 +222,40 @@ body{
         margin: auto;
     }
 
+    .taglink-container .taglink-form-group .taglink-form-control{
+        max-width: 50%;
+    }
+
     .taglink-container .taglink-form-group label{
         margin-left: 10px;
     }
 }
 
 .taglink-container .header{
-    text-align: center;
-    margin-bottom: 3em;
+    margin: 5em 0;
 }
 
-.taglink-container .header .heading{
-    font-size: 2.3em;
-    font-weight: 600;
+.taglink-container .header > p{
+    text-align: center;
+    font-size: 3em;
+    font-weight: 800;
 }
 
 .taglink-container .taglink-form-group{
     max-width: 80%;
     margin: auto;
     position: relative;
-    margin-bottom: 20px;
-}
-
-.taglink-container .taglink-form-group .add-category .custom-label{
-    font-weight: 300;
-}
-
-.taglink-container .taglink-form-group .add-category > a{
-    margin-top: 15px;
-    width: 100%;
+    text-align: center;
 }
 
 .taglink-container .taglink-form-group label{
     font-size: 1.3em;
-    font-weight: 500;
+    font-weight: 900;
     padding-right: 10px;
 }
 
-/* .taglink-container .taglink-form-group .tag-label{
-    font-weight: 300;
-} */
-
-.taglink-container .tags-group{
-    border-bottom: 1px solid black;
-}
-
-.taglink-container .tags-group .bootstrap-tagsinput > input{
-    background-color: transparent;
-    border: none;
-    width: 100%;
-}
-
-.taglink-container .taglink-form-group .tag-input{
-    padding: 7px !important;
-}
-
 .taglink-container .taglink-form-group .taglink-form-control{
-    width: 100%;
+    width: 70%;
     border-radius: 7px;
     border: 1px solid;
     outline: none;
@@ -304,8 +281,6 @@ body{
 }
 
 .taglink-container .taglink-form-group .taglink-btn{
-    width: 100%;
-    margin-top: 15px;
     border-radius: 7px;
     border: none;
     padding: 10px;
@@ -317,95 +292,50 @@ body{
     outline: none;
 }
 
-.taglink-container .tags-group{
-    margin-left: 10px;
-    text-align: start;
-    margin:auto;
+.taglink-container .rss-op{
+    margin: auto;
+    max-width: 75%;
+    margin-top: 5em;
 }
 
-.taglink-container .taglink-form-group .taglink-model{
-    width: 70%;
-    display: none;
+.taglink-container .rss-op > ol {
+    padding: 0;
+    margin: 0;
+}
+
+.taglink-container .rss-op > ol > li{
+    list-style-type: none;
+    margin-bottom: 30px;
     border: 1px solid black;
-    height: auto;
-    position: absolute;
-    left: 14.5%;
+    border-radius: 10px;
     padding: 10px;
-    z-index: 100;
-    background-color: rgba(245, 245, 245, 0.9);
+    box-shadow: 3px 4px 5px grey;
 }
 
-.taglink-container .taglink-form-group .taglink-model .image{
-    margin-top: 24px;
-    margin-right: 10px;
-    overflow: hidden;
+.taglink-container .rss-op > ol > li > h4{
+    text-align: center;
+    font-weight: 600;
 }
 
-.taglink-container .taglink-form-group .show{
-    display: flex;
-}
-
-.taglink-container .taglink-form-group .image > img{
-    max-width: 100%;
-    height: auto;
+.taglink-container .rss-op > ol > li > span{
+    float: right;
 }
 
 @media only screen and (max-width: 992px){
-    .taglink-container .taglink-form-group .show{
-        flex-direction: column;
+    .taglink-container .rss-op{
+        max-width: 90%;
     }
 }
 
-.row {
-    margin-top: 6em;
+@media only screen and (max-width: 576px){
+    .taglink-container .rss-op{
+        max-width: 100%;
+    }
 }
 
-.row .col-lg-4 {
-    margin-bottom: 30px;
-}
-
-.row .col-lg-4 .link-tabs{
-    border: 2px solid grey;
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 5px;
-    height: 27em;
-    overflow: hidden;
-}
-
-.row .col-lg-4 .link-tabs .img-tab {
-    overflow: hidden;
-}
-
-.row .col-lg-4 .link-tabs .img-tab > img{
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    height: 200px;
-    border-radius: 10px;
-}
-
-.row .col-lg-4 .link-tabs .text-tab .title{
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-top: 10px;
-}
-
-.row .col-lg-4 .link-tabs .text-tab .tags{
-    margin-bottom: 10px;
-}
-
-.row .col-lg-4 .link-tabs .text-tab .tags > a{
-    text-decoration: none;
-    background-color: lightblue;
-    padding: 3px;
-    border-radius: 5px;
-    color: #1c21d0;
-    display: inline-block;
-    margin-bottom: 4px;
-}
-
-.row .col-lg-4 .link-tabs .text-tab .tags > a:hover{
-    color: #3e65bd;
+@media only screen and (max-width: 400px){
+    .taglink-container .rss-op > ol > li > span{
+        display: inline-block;
+        float: none !important;
+    } 
 }
