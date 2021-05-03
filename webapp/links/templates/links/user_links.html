@@ -18,7 +18,7 @@
     <div class="row">
     {% if user.is_authenticated %}
       {% for link in links.user_links %}
-        <div class="bg-white rcorners shadow overflow-hidden p-0 m-0">
+        <div class="bg-white rcorners shadow overflow-hidden p-0 m-0 w-100 rounded-lg">
           <span class="float-right p-2 m-2">
             <a href="#">
               <a href="{% url 'user_links' link.pk %}" class="fas fa-trash-alt"></a>
