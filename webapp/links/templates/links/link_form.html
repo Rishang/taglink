@@ -7,39 +7,105 @@
 
 <div class="container">
   <div class="p-3"></div>
-    <a href="{% url 'add_categoty' %}">Add Category</a>
+    <!-- <a href="{% url 'add_categoty' %}">Add Category</a> -->
     {% include 'messages.html' %}
-    <div class="form-group">
-      <form action="" method="post">
-        {% csrf_token %}
-        {# {{form}} #}
-        <!-- url -->
-        <label for="url">Link</label>
-        {% render_field form.url class="form-control" id="url" %}
+  </div>
+
+  <div class="taglink-container">
+    <form action="" method="post">
+
+      {% csrf_token %}
+      {# {{form}} #}
         <!-- category -->
-        <label for="category">Category</label>
-        {% render_field form.category class="form-select" %}
+        <div class="taglink-form-group">
+          <div class="add-category">
+            <label for="category" class="custom-label">Category:</label>
+            {% render_field form.category class="custom-select" %}
+          </div>
+        </div>
+      
+        <!-- url -->
+        <div class="taglink-form-group">
+          <label for="url">Link</label>
+          <div style="display: inline; position: relative;">
+            {% render_field form.url class="taglink-form-control" id="url" %}
+            <span class="cancel-btn" id="erase"><i class="fas fa-backspace" aria-hidden="true"></i></span>
+            <br>
+          </div>
+        </div>
+
         <!-- title -->
-        {% render_field form.title class="form-control" type="hidden" id="form_title" %}
+        {% render_field form.title class="taglink-form-control" type="hidden" id="form_title" %}
         <!-- description -->
-        {% render_field form.description class="form-control" type="hidden" id="form_description" %}
+        {% render_field form.description class="taglink-form-control" type="hidden" id="form_description" %}
         <!-- image -->
-        {% render_field form.imageUrl class="form-control"  type="hidden"  %}
-        <!-- tags -->
-        <label for="tags">Tags</label>
-        {% render_field form.tags class="form-control" %}
+        {% render_field form.imageUrl class="taglink-form-control"  type="hidden"  %}
         <br>
-        <input type="submit" class="btn btn-primary" value="Add">
+
+        <!-- tags -->
+        <div class="taglink-form-group tags-group">
+            <label for="tags" class="tag-label">Tags : </label>
+            <div class="bootstrap-tagsinput">
+              {% render_field  form.tags data-role="tagsinput" class="tag-input taglink-form-control" style="border-style: none" name="tags" id="tags" placeholder="Enter supporting tags for your link..." %}
+              <span class="cancel-btn" id="erase"><i class="fas fa-backspace" aria-hidden="true"></i></span>
+            </div>
+            <br>
+        </div>
+       
+        <div class="taglink-form-group">
+          <div class="p-2"></div>
+          <input type="submit" class="btn taglink-btn" value="Add Link">
+        </div>
+
       </form>
-      <div class="model" id="model">
-        <h5 id="title"></h5>
-        <p id="description"></p>
       </div>
+      <h5 id="title"></h5>
+      <p id="description"></p>
     </div>
+  </div>
+
+    <div class="model" id="model">
   </div>
 </div>
 {% endblock content %}
 
+
+<!-- <div class="taglink-form-group tags-group">
+  <label for="tags" class="tag-label">Tags : </label>
+  
+  <span class="badge badge badge-info" style="">dfg<span data-role="remove"></span></span> 
+  <input type="text" placeholder="Enter supporting tags for your link..." size="38"></div><input type="text" class="taglink-form-control tag-input" name="tags" id="tags" placeholder="Enter supporting tags for your link..." data-role="tagsinput" required="" style="display: none;">
+</div> -->
+
+
 {% block scripts %}
+<script>
+  $(document).ready(function(){
+
+      // jQuery for search bar 
+      $(".search-link").click(function(){
+          $("#search-box").slideToggle();
+      });
+
+
+      // jQuery for navigation bar for width less than 992px
+      $("#menu-btn").click(function(){
+          $("#collapse-bar").slideToggle();
+      });
+
+      //jQuery for erase button to clear the URL bar
+      $("#erase").click(function(){
+          $("#url").val("");
+          $("#taglink-model").removeClass("show");
+      });
+
+      //jQuery for removing show class when input is unfocused
+      $("#url").focusout(function(){
+          $("#taglink-model").removeClass("show");
+      });
+
+  });
+</script>
+<script src="https://www.jqueryscript.net/demo/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.js"></script>
 <script src="{% static 'js/link_preview.js' %}"></script>
 {% endblock scripts %}
