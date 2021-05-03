@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/ress-feed.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+
+
+<div class="search-box" id="search-box">
+		<div class="input-group">
+				<input type="search" name="search-bar" id="search-bar" placeholder="Search...." class="form-control">
+				<div class="input-group-append">
+						<button type="submit" class="btn btn-outline-secondary">Search</button>
+				</div>
+		</div>
+</div>
+
+<div class="taglink-container">
+
+	<div class="header">
+			<p>Input RSS feed below for daily updates.</p>
+	</div>
+
+	<!-- url post request html -->
+	<form action="" id="url-post-req">
+			<div class="taglink-form-group">
+					<label for="url">URL : </label>
+					<div style="display: inline; position: relative;">
+							<input type="url" class="taglink-form-control" id="url" placeholder="Enter the RSS link....">
+							<span class="cancel-btn" id="erase"><i class="fas fa-backspace"></i></span>
+					</div>
+					<input type="button" class="taglink-btn" id="btn" value="Search">
+			</div>
+	</form>
+
+	<div class="rss-op" id="rss-output">
+		<ol id="ol-list"></ol>
+	</div>
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+
+		// jQuery for search bar 
+		$(".search-link").click(function(){
+				$("#search-box").slideToggle();
+		});
+
+
+		// jQuery for navigation bar for width less than 992px
+		$("#menu-btn").click(function(){
+				$("#collapse-bar").slideToggle();
+		});
+
+		//jQuery for erase button to clear the URL bar
+		$("#erase").click(function(){
+				$("#url").val("");
+				$("#taglink-model").removeClass("show");
+		});
+
+		//jQuery for removing show class when input is unfocused
+		$("#url").focusout(function(){
+				$("#taglink-model").removeClass("show");
+		});
+
+});
+</script>
+<script src="{% static 'js/feed-req.js' %}"></script>
+{% endblock scripts %}

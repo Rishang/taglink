@@ -17,13 +17,19 @@
         </li>
         <li>
           <a href="{% url 'home-page' %}" class="taglink-nav-link">
-            <i class="fas fa-home"></i> &nbsp; Home</a>
+            <i class="fas fa-home"></i> &nbsp; Home
+          </a>
         </li>
         {% if user.is_authenticated %}
           <li>
             <a href="{% url 'user_links' %}" class="taglink-nav-link"
-              ><i class="fas fa-clone"></i> &nbsp; Collection</a
-            >
+              ><i class="fas fa-clone"></i> &nbsp; Collection
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'rss_reader' %}" class="taglink-nav-link">
+              <i class="fas fa-rss-square" aria-hidden="true"></i> &nbsp; Read
+            </a>
           </li>
           <li>
             <a href="{% url 'add_link' %}" class="taglink-nav-link">

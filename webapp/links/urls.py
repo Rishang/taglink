@@ -7,4 +7,6 @@ urlpatterns = [
     path("add_category/", views.createCategory.as_view(), name="add_categoty"),
     path("my_links/", views.listLinksAndCategory.as_view(), name="user_links"),
     path("my_links/<int:pk>/delete/", views.deleteLink.as_view(), name="user_links"),
+    path('rss/', views.rss_reader, name="rss_reader"),
+
 ]

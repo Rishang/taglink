@@ -72,3 +72,6 @@ class deleteLink(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
             return True
         else:
             return False
+
+def rss_reader(request):
+    return render(request, 'rss/rss-feed-page.html')
