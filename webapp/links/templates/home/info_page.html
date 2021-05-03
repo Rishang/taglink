@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/info-page.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="info-container">
+    <div class="info-tab">
+        <div class="header">
+            <p>A single place for every LINK</p>
+        </div>
+        <div class="discription">
+            <p>Save and share the content you have, across different platforms.</p>
+        </div>
+        <div class="signup-btn">
+            <button id="taglink-signup"><a href="{% url 'register_page' %}" style="text-decoration: none; color: white;">Get started with us</a></button>
+        </div>
+        <div class="login-link">
+            Already on Taglink? <a href="{% url 'login_page' %}" class="taglink-login" id="login-link">Log in</a>
+        </div>
+    </div>
+
+    
+    <div class="link-preview-tab">
+        <div class="preview-text">
+            <p class="heading">Easily managed</p>
+            <p class="desc">
+                Simply copy paste the link you want to save, get a preview of the url
+                and save the url link to your profile.
+            </p>
+        </div>
+
+        <div class="preview-img">
+            <img src="{% static 'images/preview-img.png' %}" alt="Link preview">
+        </div>
+    </div>
+
+    <div class="profile-tab">
+        <div class="profile-view">
+            <div class="outer-border">
+                <div class="user-dp">
+                    <img src="{% static 'images/user-icon.png' %}" alt="user-icon">
+                </div>
+                <p class="user-id">@user_name</p>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-socials">
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-desc">
+            <p class="heading">Set up your profile</p>
+            <p class="desc">
+                Setting your profile is simple and easy task, that can be done in minutes. Makes your work of arranging the links and saving them effortless and simple.
+            </p>
+        </div>
+    </div>
+
+    <div class="sharing-tab profile-tab">
+        <div class="sharing-tab-text">
+            <p class="heading">Share across the WORLD</p>
+            <p class="desc">Take your profile and share it to the world by linking it with all your social media platforms and show people your content.</p>
+        </div>
+
+        <div class="profile-view">
+            <div class="outer-border">
+                <div class="user-dp">
+                    <img src="{% static 'images/user-icon.png' %}" alt="user-icon">
+                </div>
+                <p class="user-id">@user_name</p>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-link"></div>
+                <div class="user-socials">
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div>
+            <i class="fab fa-snapchat-square social snapchat"></i>
+            <i class="fab fa-instagram-square social instagram"></i>
+            <i class="fab fa-youtube-square social youtube"></i>
+            <i class="fab fa-twitter-square social twitter"></i>
+        </div>
+    </div>
+
+</div>
+<footer>
+    <hr>
+    <div class="footer">
+        <div class="footer-brand">
+            <a href="#"><p style="margin:0;">Taglink</p></a>
+        </div>
+        <div class="socials">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <hr>
+</footer>
+{% endblock content %}

@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.ListAllUserLinks.as_view(), name="home-page"),
+    path("", views.home_page, name="home"),
+    path("/home", views.ListAllUserLinks.as_view(), name="home-page"),
     path("add_link/", views.createLink.as_view(), name="add_link"),
     path("add_category/", views.createCategory.as_view(), name="add_categoty"),
     path("my_links/", views.listLinksAndCategory.as_view(), name="user_links"),
